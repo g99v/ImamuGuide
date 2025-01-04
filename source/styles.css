@@ -368,7 +368,7 @@ nav {
 }
 
 .swiper-slider {
-    max-width: calc((var(--max-width) / 3) -1.5rem);
+    max-width: calc((var(--max-width) / 3) - 1.5rem);
 }
 
 .client__card {
@@ -527,7 +527,6 @@ nav {
     color: #fff;
     font-size: 1.2rem;
     z-index: 1000;
-    display: none; /* Hidden by default */
   }
   
   .loading-spinner {

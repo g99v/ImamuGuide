@@ -56,8 +56,6 @@ const swiper = new Swiper(".swiper", {
 
 import {
     GoogleGenerativeAI,
-    HarmCategory,
-    HarmBlockThreshold,
   } from "https://esm.run/@google/generative-ai"; // Use ES Modules
   
   document.addEventListener("DOMContentLoaded", function () {
