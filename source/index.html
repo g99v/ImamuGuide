@@ -53,6 +53,10 @@
                 </div>
                 <div class="input__group">
                     <button class="btn" type="submit">Search</button>
+                <div id="loading-popup" class="loading-popup" style="display: none;">
+                    <div class="loading-spinner"></div>
+                    <p>Generating your itinerary... Please wait.</p>
+                </div>
                 </div>
             </form>
             
@@ -60,25 +64,25 @@
     </header>
 
     <section class="section__container feature__container" id="service">
-        <div class="feature__card">
+        <div class="feature__card" style="display: flex; align-items: center;">
             <img src="assert/feature-22.png" alt="feature" />
-            <div>
+            <div style="padding-left: 20px;">
                 <h4>Step 1 : vist ImamuGuide</h4>
-                <p>Pick one of our Recommendations.</p>
+                <p>Generate your itinerary.</p>
             </div>
         </div>
-        <div class="feature__card">
+        <div class="feature__card" style="display: flex; align-items: center;">
             <img src="assert/feature 11.png" alt="feature" />
-            <div>
-                <h4>Step 2 : Pack Your Luggage</h4>
+            <div style="padding-left: 20px;">
+                <h4>Step 2 : Pack Your Bags!</h4>
                 <p>Don't forget Your Passbort!</p>
             </div>
         </div>
-        <div class="feature__card">
+        <div class="feature__card" style="display: flex; align-items: center;">
             <img src="assert/feature-33.png" alt="feature" />
-            <div>
-                <h4> Step 3 : Enjoy Your Holiday!</h4>
-                <p> Make The Best Memories!</p>
+            <div style="padding-left: 20px;">
+                <h4>Step 3: Enjoy Your Holiday!</h4>
+                <p>Create The Best Memories!</p>
             </div>
         </div>
     </section>
@@ -111,82 +115,20 @@
 
     <section class="discount">
         <div class="section__container discount__container">
-            <h2>Get up-to 10% discount<br /><span> by joining us before Febuary</span>
+            <h2>Create your Personalized Itinirary Now!<br /><span> For Free</span>
             </h2>
             <div class="discount__btn">
-                <button class="btn">Click for the discount</button>
+                <button class="btn">Fill the form</button>
             </div>
         </div>
     </section>
 
-    <section class="section__container package__container" id="package">
-        <h2 class="section__header">Feature package</h2>
-        <p class="section__description">
-            We will coordinate your trip for you
-        </p>
-        <div class="package__grid">
-            <div class="package__card">
-                <img src="assert/Thmamh.jpg" alt="package">
-                <img src="assert/albjere.jpg" alt="packge">
-                <div class="package__card_details">
-                    <h4>Riyadh tour</h4>
-                    <p>
-                        Explore the culture in Al-Bujairi and the Red sand in Al-Thumama
-                    </p>
-                    <div>
-                        <li><a href="Riyadh.html"><button class="btn">Book now</button></a></li>
-                        <h3>500ريال</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="package__card">
-                <img src="assert/destination-3.jpg" alt="package">
-                <img src="assert//jeddah albld.jpg" alt="package">
-                <div class="package__card_details">
-                    <h4>Jeddah tour</h4>
-                    <p>
-                        Explore the culture in jeddah albald and fell the breeze in Jeddah Corniche
-                    </p>
-                    <div>
-                        <button class="btn">Book now</button>
-                        <h3>300ريال</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="package__card">
-                <img src="assert/wild life.jpg" alt="package">
-                <img src="assert/destination-4.jpg" alt="package">
-                <div class="package__card_details">
-                    <h4>Red Sea Tour</h4>
-                    <p>
-                        Discover marine life by diving
-                    </p>
-                    <div>
-                        <button class="btn">Book now</button>
-                        <h3>1500ريال</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="package__card">
-                <img src="assert/alula.jpg" alt="package">
-                <img src="assert/destination-2.jpg" alt="package">
-                <div class="package__card_details">
-                    <h4>Al-Ula Tour</h4>
-                    <p>
-                        Explor the history and antiquities
-                    </p>
-                    <div>
-                        <button class="btn">Book now</button>
-                        <h3>2500ريال</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </section>
     <section class="section__container client__container" id="client">
-        <h2 class="section__header">Clint Reviews</h2>
+        <h2 class="section__header">User Reviews</h2>
         <p class="section__description">
-            some our loyla custmer Reviews
+            Some reviews from our users !
         </p>
         <!-- Slider main container -->
         <div class="swiper">
@@ -262,75 +204,21 @@
             <div class="swiper-pagination"></div>
         </div>
     </section>
-    <section class="subscribe">
-
-        <div class="section__container subscribe__container">
-            <h2>sign in to get Premium features</h2>
-            <div>
-                <p>for the best recommendation</p>
-                <form action="text" placeholder="Enter your email">
-                    <button class="btn">Sign in</button>
-                </form>
-            </div>
-        </div>
-    </section>
-    <footer class="footer">
-        <div class="section__container footer__container">
-            <div class="footer__col">
-                <div class="footer__logo">
-                    <a href="#" class=logo>Travel<span>Dream</span></a>
-                </div>
-                <p>
-                    Explore the Saudi Arabia is with us
-                </p>
-                <h4>Technical Support</h4>
-                <ul class="footer__socials">
-                    <li>
-                        <a href="#"><i class="ri-twitter-x-fill"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="ri-customer-service-fill"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="ri-facebook-box-fill"></i></a>
-                    </li>
-                </ul>
-            </div>
-            <div class="footer__col">
-                <h4>QUICK LINKS</h4>
-                <ul class="footer__links">
-                    <li><a href="#">HOME</a></li>
-                    <li><a href="#">ABOUT US</a></li>
-                    <li><a href="#">BLOGS</a></li>
-                    <li><a href="#">Testimonials</a></li>
-                    <li><a href="#"></a>Contact us</li>
-                </ul>
-            </div>
-            <div class="footer__col">
-                <h4>DESTINATIONS</h4>
-                <ul class="footer__links">
-                    <li><a href="#">Riyadh</a></li>
-                    <li><a href="#">Makkah</a></li>
-                    <li><a href="#">Dammam</a></li>
-                    <li><a href="#">Hail</a></li>
-                    <li><a href="#"></a>Qassim</li>
-                </ul>
-            </div>
-            <div class="footer__col">
-                <h4>ACTIVITIES</h4>
-                <ul class="footer__links">
-                    <li><a href="#">Slaying in the sand</a></li>
-                    <li><a href="#">Museums</a></li>
-                    <li><a href="#">Tour</a></li>
-                    <li><a href="#">Riyadh season</a></li>
-
-                </ul>
-            </div>
-        </div>
-    </footer>
+<footer style="text-align: center; padding: 20px; background-color: #f4f4f4; border-top: 1px solid #ddd; font-family: Arial, sans-serif;">
+    <p style="margin: 0; font-size: 14px; color: #555;">
+        &copy; <span id="current-year"></span> ImamuGuide. All rights reserved.
+    </p>
+    <p style="margin: 10px 0 0; font-size: 12px; color: #777;">
+        Disclaimer: Our itinerary plans are AI-generated and may require verification for accuracy and suitability ;).
+    </p>
+</footer>
+<script>
+    // Automatically update the year
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+</script>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="main.js"></script>
+    <script type= module src="main.js"></script>
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";

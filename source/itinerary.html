@@ -4,7 +4,6 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
-    
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
         <link rel="stylesheet" href="styles.css">
         <link rel="stylesheet" href="stylesItinerary.css">
@@ -43,7 +42,59 @@
         </tbody>
       </table>
     </div>
+
+    <!-- AI Response Section -->
+    <div class="ai-container">
+      <h1>Trip Itinerary</h1>
+      <div id="ai-response">
+        <!-- AI-generated response will be inserted here -->
+      </div>
+    </div>
+    <div class="md-4 pd container">
+      <h5>
+        For Hotels & Flight Booking:
+        <a style="text-decoration: none" href="https://www.booking.com" target="_blank">
+          <button type="button" class="btn btn-light">
+            Click Here
+          </button>
+        </a>
+      </h5>
+    </div>
   </main>
-  <script src="weather.js"></script> <!-- Link to your JS -->
+
+  <script>
+    // Retrieve data from localStorage
+    const weatherData = JSON.parse(localStorage.getItem("weatherData"));
+    const aiResponse = localStorage.getItem("aiResponse");
+
+    // Display weather data
+    if (weatherData) {
+      // Set location
+      document.getElementById("location").textContent = weatherData.resolvedAddress;
+
+      // Populate weather table
+      const weatherTableBody = document.getElementById("weather-data");
+      weatherData.days.forEach(day => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${day.datetime}</td>
+            <td>${day.conditions}</td>
+            <td>${day.tempmax}</td>
+            <td>${day.tempmin}</td>
+            <td>${day.precipprob || "N/A"}</td>
+            <td>${day.humidity || "N/A"}</td>
+            <td>${day.description || "No alerts"}</td>
+        `;
+        weatherTableBody.appendChild(row);
+      });
+    }
+
+    // Display AI response
+    if (aiResponse) {
+      const aiResponseDiv = document.getElementById("ai-response");
+      aiResponseDiv.innerHTML = `<p>${aiResponse}</p>`;
+    }
+  </script>
+  <script type=module src="main.js"></script>
 </body>
 </html>

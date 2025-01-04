@@ -54,67 +54,115 @@ const swiper = new Swiper(".swiper", {
     },
 })
 
-document.addEventListener("DOMContentLoaded", function () {
+import {
+    GoogleGenerativeAI,
+    HarmCategory,
+    HarmBlockThreshold,
+  } from "https://esm.run/@google/generative-ai"; // Use ES Modules
+  
+  document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("weatherForm");
-    const apiKey = "3B6ULCXBXPLJDDUGDYPG4LVU2"; // Replace with your Visual Crossing Weather API key
+    const weatherApiKey = "ApiKey"; // Weather API key
+    const googleApiKey = "ApiKey"; // Google AI API key (loaded from environment variables)
+    
+    const loadingPopup = document.getElementById("loading-popup");
 
     form.addEventListener("submit", async (event) => {
-        event.preventDefault(); // Prevent the form from submitting normally
+      event.preventDefault(); // Prevent the form from submitting normally
+    
+    // Show the loading popup
+    loadingPopup.style.display = "flex";
 
-        // Retrieve input values
-        const source = document.getElementById("source").value.trim();
-        const destination = document.getElementById("destination").value.trim();
-        const startDate = document.getElementById("start_date").value.trim();
-        const endDate = document.getElementById("end_date").value.trim();
-
-        // Validate input
-        if (!source || !destination || !startDate || !endDate) {
-            alert("Please fill in all fields.");
-            return;
-        }
-
-        // Validate date range
-        const start = new Date(startDate);
-        const end = new Date(endDate);
-        if (start > end) {
-            alert("End date must be after the start date.");
-            return;
-        }
-
-        try {
-            // Fetch weather data
-            const weatherData = await getWeatherData(apiKey, destination, startDate, endDate);
-
-            // Display the result or handle it as needed
-            if (weatherData) {
-                console.log("Weather Data:", weatherData);
-                alert("Weather data fetched successfully! Check the console for details.");
-                // Store data in localStorage
-                localStorage.setItem("weatherData", JSON.stringify(weatherData));
-                // Redirect to the weather page
-                window.location.href = "itinerary.html";
-            }
-        } catch (error) {
-            console.error("Error fetching weather data:", error);
-            alert("Failed to fetch weather data. Please try again.");
-        }
+      // Retrieve input values
+      const source = document.getElementById("source").value.trim();
+      const destination = document.getElementById("destination").value.trim();
+      const startDate = document.getElementById("start_date").value.trim();
+      const endDate = document.getElementById("end_date").value.trim();
+  
+      // Validate input
+      if (!source || !destination || !startDate || !endDate) {
+        alert("Please fill in all fields.");
+        loadingPopup.style.display = "none"; // Hide the loading popup
+        return;
+      }
+  
+      // Validate date range
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+      if (start > end) {
+        alert("End date must be after the start date.");
+        loadingPopup.style.display = "none"; // Hide the loading popup
+        return;
+      }
+  
+      // Calculate the number of days
+      const timeDifference = end - start;
+      const noOfDays = Math.ceil(timeDifference / (1000 * 60 * 60 * 24)) + 1; // Add 1 to include both start and end dates
+  
+      try {
+        // Fetch weather data
+        const weatherData = await getWeatherData(weatherApiKey, destination, startDate, endDate);
+  
+        // Generate AI content using the same inputs
+        const aiResponse = await generateAIContent(googleApiKey, source, destination, startDate, endDate, noOfDays);
+  
+        // Store data in localStorage
+        localStorage.setItem("weatherData", JSON.stringify(weatherData));
+        localStorage.setItem("aiResponse", aiResponse);
+        // Redirect to the weather page
+        window.location.href = "itinerary.html";
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Failed to fetch data. Please check your inputs and try again.");
+        loadingPopup.style.display = "none"; // Hide the loading popup
+      } finally {
+        // Hide the loading popup
+        loadingPopup.style.display = "none";
+      }
     });
-
-    /**
-     * Fetch weather data from Visual Crossing Weather API
-     * @param {string} apiKey - Your API key
-     * @param {string} location - Location for weather data
-     * @param {string} startDate - Start date in "YYYY-MM-DD" format
-     * @param {string} endDate - End date in "YYYY-MM-DD" format
-     * @returns {Promise<Object>} - Weather data in JSON format
-     */
+  
+    // Function to fetch weather data
     async function getWeatherData(apiKey, location, startDate, endDate) {
-        const baseUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/${startDate}/${endDate}?unitGroup=metric&include=days&key=${apiKey}&contentType=json`;
-
-        const response = await fetch(baseUrl);
-        if (!response.ok) {
-            throw new Error(`Error fetching weather data: ${response.statusText}`);
-        }
-        return await response.json();
+      const baseUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/${startDate}/${endDate}?unitGroup=metric&include=days&key=${apiKey}&contentType=json`;
+  
+      const response = await fetch(baseUrl);
+      if (!response.ok) {
+        throw new Error(`Error fetching weather data: ${response.statusText}`);
+      }
+      return await response.json();
     }
-});
+  
+    // Function to generate AI content
+    async function generateAIContent(apiKey, source, destination, startDate, endDate, noOfDays) {
+      const genAI = new GoogleGenerativeAI(apiKey);
+  
+      const model = genAI.getGenerativeModel({
+        model: "gemini-2.0-flash-exp",
+      });
+  
+      const generationConfig = {
+        temperature: 1,
+        topP: 0.95,
+        topK: 40,
+        maxOutputTokens: 8192,
+        responseMimeType: "text/plain",
+      };
+  
+      const chatSession = model.startChat({
+        generationConfig,
+        history: [],
+      });
+  
+      // Create a prompt using the form inputs
+      const prompt = `forget all previous prompts. Generate a personalized trip itinerary for a ${noOfDays}-day trip from ${source} to ${destination} on ${startDate} to ${endDate}, 
+      with an optimum budget (Currency: SAR (Saudi Riyals)). Include recommendations for accommodations, activities, and transportation. 
+      IMPORTANT NOTE: you are writing this text to be displayed on an html page, so write the output as if its writtin in html
+       so it becomes well formatted, the base format is each day as a big title and then the description for said day. additionally, 
+       dont write code tag at the beginning. also, when u want to use a redirect link, only use https://www.google.com/search?q=SEARCH TERM HERE WITH SPACES REPLACED BY A PLUS SIGN. 
+       also add a bit more subtle css styling to ur output, put a disclamer saying "This itinerary was generated using Google Gemini" at the bottom of the page".`;
+  
+      // Generate content using the Google AI API
+      const result = await chatSession.sendMessage(prompt);
+      return result.response.text();
+    }
+  });
