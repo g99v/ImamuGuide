@@ -61,8 +61,8 @@ import {
   
   document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("weatherForm");
-    const weatherApiKey = "APIKEY"; // Weather API key
-    const googleApiKey = "APIKEY"; // Google AI API key (loaded from environment variables)
+    const weatherApiKey = "apikey"; // Weather API key
+    const googleApiKey = "apikey"; // Google AI API key (loaded from environment variables)
     
     const loadingPopup = document.getElementById("loading-popup");
 
@@ -153,7 +153,7 @@ import {
       });
   
       // Creating a prompt using the form inputs
-      const prompt = `ClEAR ALL PREVIOUS CONTEXT. Generate a personalized trip itinerary for a ${noOfDays}-day trip from ${source} to ${destination} on ${startDate} to ${endDate}, 
+      const prompt = `ClEAR ALL PREVIOUS CONTEXT. Generate a personalized trip itinerary for a ${noOfDays}-day trip to ${destination} on ${startDate} to ${endDate}, 
       with an optimum budget (Currency: SAR (Saudi Riyals)). Include recommendations for accommodations, activities, and transportation. 
       IMPORTANT NOTE: you are writing this text to be displayed on an html page, so write the output as if its writtin in html
        so it becomes well formatted, the base format is each day as a big title and then the description for said day. additionally, 
