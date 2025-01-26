@@ -219,23 +219,23 @@
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script type= module src="main.js"></script>
-    <script type="module">
 
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-        
-        // Our web app's Firebase configuration
-        const firebaseConfig = {
-          apiKey: "AIzaSyCnbrmPS3vpIs-NuU3DDMhcEgAqx2roXf0",
-          authDomain: "imamu-guide.firebaseapp.com",
-          projectId: "imamu-guide",
-          storageBucket: "imamu-guide.firebasestorage.app",
-          messagingSenderId: "517446189521",
-          appId: "1:517446189521:web:e7e85f761515cbd0fba0f0"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-      </script>
+    <script type="module" src="firebase-config.js"></script>
+
+      <script type="module">
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+  import { app } from "./firebase-config.js"; // Import the Firebase app
+
+  const auth = getAuth(app);
+
+  onAuthStateChanged(auth, (user) => {
+    if (!user) {
+      window.location.href = 'login.html';
+    }
+  });
+</script>
+
+
 </body>
 
 </html>

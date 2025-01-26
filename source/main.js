@@ -2,6 +2,7 @@ const menuBtn = document.getElementById("menu-btn");
 const navLinks = document.getElementById("nav-links");
 const menuBtnIcon = menuBtn.querySelector("i");
 
+
 menuBtn.addEventListener("click", (e) => {
     navLinks.classList.toggle("open");
 
@@ -60,8 +61,8 @@ import {
   
   document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("weatherForm");
-    const weatherApiKey = "ApiKey"; // Weather API key
-    const googleApiKey = "ApiKey"; // Google AI API key (loaded from environment variables)
+    const weatherApiKey = "APIKEY"; // Weather API key
+    const googleApiKey = "APIKEY"; // Google AI API key (loaded from environment variables)
     
     const loadingPopup = document.getElementById("loading-popup");
 
@@ -83,7 +84,7 @@ import {
         loadingPopup.style.display = "none"; // Hide the loading popup
         return;
       }
-  
+      
       // Validate date range
       const start = new Date(startDate);
       const end = new Date(endDate);
@@ -151,8 +152,8 @@ import {
         history: [],
       });
   
-      // Create a prompt using the form inputs
-      const prompt = `forget all previous prompts. Generate a personalized trip itinerary for a ${noOfDays}-day trip from ${source} to ${destination} on ${startDate} to ${endDate}, 
+      // Creating a prompt using the form inputs
+      const prompt = `ClEAR ALL PREVIOUS CONTEXT. Generate a personalized trip itinerary for a ${noOfDays}-day trip from ${source} to ${destination} on ${startDate} to ${endDate}, 
       with an optimum budget (Currency: SAR (Saudi Riyals)). Include recommendations for accommodations, activities, and transportation. 
       IMPORTANT NOTE: you are writing this text to be displayed on an html page, so write the output as if its writtin in html
        so it becomes well formatted, the base format is each day as a big title and then the description for said day. additionally, 
