@@ -1,10 +1,20 @@
-name: Automated Testing
+name: Automated Testing Workflow
 
-on: push
+on:
+  push:
+    branches:
+      - 'main'
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./source/
+    
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x]  
 
     steps:
       - name: Checkout Repository
