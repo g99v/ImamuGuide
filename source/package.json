@@ -4,5 +4,8 @@
     },
     "devDependencies": {
       "jest": "^29.0.0"
+    },
+    "jest": {
+      "testEnvironment": "jsdom"
     }
   }
