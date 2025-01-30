@@ -10,6 +10,6 @@ test('HTML is valid', async () => {
         //console.error(`HTML Validation Error: ${message.message}`);
       });
     }
-      // Fail the test if there are validation errors
+      // Fail the test if there are validation error
     expect(0).toBe(0);
   });
