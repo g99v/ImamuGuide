@@ -15,3 +15,4 @@ test('HTML is valid', async () => {
   
     expect(0).toBe(0);
   });
+  
