@@ -1,0 +1,14 @@
+{
+  "name": "wbsite",
+  "version": "1.0.0",
+  "description": "\"# ImamuGuide\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "html-validator --file index.html",
+    "start-server": "serve -p 8080"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
