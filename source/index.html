@@ -24,9 +24,7 @@
         </div>
         <ul class="nav__links" id="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#service">Services</a></li>
-            <li><a href="#destination">Destination</a></li>
-            <li><a href="#package">Package</a></li>
+            <li><a href="#destination">Destinations</a></li>
             <li><a href="#client">Clients</a></li>
         </ul>
     </nav>
@@ -34,11 +32,7 @@
         <div class="section__container header__container">
             <h1>TRAVELLER<br /><span>FOR LIFE.</span></h1>
             <p>We wish you The Best Time!!</p>
-            <form id="weatherForm">
-                <div class="input__group">
-                    <span><i class="ri-map-2-fill"></i></span>
-                    <input type="text" id="source" placeholder="Where are you starting from?" required />
-                </div>
+            <form id="weatherForm"> 
                 <div class="input__group">
                     <span><i class="ri-map-2-fill"></i></span>
                     <input type="text" id="destination" placeholder="Where are you going?" required />
@@ -94,21 +88,17 @@
                 Fill The Sahar Breeze and Explore the Red sand
             </p>
             <div class="destination__grid">
-                <div class="destination__card">
+                <div class="destination__card" onclick="window.location.href='riyadh.html';" style="cursor: pointer;">
                     <img src="assert/destination-1.jpg" alt="destination">
-                    <div class="destination__content">Riyadh </div>
+                    <div class="destination__content">Riyadh</div>
                 </div>
-                <div class="destination__card">
-                    <img src="assert/destination-2.jpg" alt="destination">
-                    <div class="destination__content">Al-ula</div>
-                </div>
-                <div class="destination__card">
+                <div class="destination__card" onclick="window.location.href='jeddah.html';" style="cursor: pointer;">
                     <img src="assert/destination-3.jpg" alt="destination">
                     <div class="destination__content">Jeddah</div>
-                </div>
-                <div class="destination__card">
-                    <img src="assert/destination-4.jpg" alt="destination">
-                    <div class="destination__content">Red Sea</div>
+                </div>  
+                <div class="destination__card" onclick="window.location.href='alula.html';" style="cursor: pointer;">
+                    <img src="assert/destination-2.jpg" alt="destination">
+                    <div class="destination__content">Al-Ula</div>
                 </div>
             </div>
     </section>
@@ -118,7 +108,12 @@
             <h2>Create your Personalized Itinirary Now!<br /><span> For Free</span>
             </h2>
             <div class="discount__btn">
-                <button class="btn">Fill the form</button>
+                <button class="btn" onclick="scrollToTop()">Fill the form</button>
+                <script>
+                    function scrollToTop() {
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                </script>
             </div>
         </div>
     </section>
@@ -137,67 +132,37 @@
                 <!-- Slides -->
                 <div class="swiper-slide">
                     <div class="client__card">
-                        <img src="assert/CLIENT 2.jpg" alt="client">
+                        <img src="assert/CLIENT.webp" alt="client">
                         <span><i class="ri-double-quotes-1"></i></span>
-                        <p>
-                            انها ليست المره الاولى التي اقوم بالحجز عن طريقهم انهم رايعون للغايه
-                        </p>
-                        <h4>محمد ابو لؤي</h4>
-                        <h5>
-                            راعي ابل
-                        </h5>
+                        <p>Love how quickly the AI generates personalized itineraries! Great features for exploring Saudi Arabia!</p>
+                        <h4>Ali</h4>
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="client__card">
-                        <img src="assert/CLIENT 1.jpg" alt="client">
+                        <img src="assert/CLIENT.webp" alt="client">
                         <span><i class="ri-double-quotes-1"></i></span>
                         <p>
-                            والله ماقصرو معي االله يبيض وجيهم خصوصا خالد
-                        </p>
-                        <h4>طرمبه</h4>
-                        <h5>
-                            اعمال حره
-                        </h5>
+                            Super useful tool for planning trips. The AI does an amazing job customizing travel plans.                        </p>
+                        <h4>Fahad</h4>
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="client__card">
-                        <img src="assert/CLIENT 3.jpg" alt="client">
+                        <img src="assert/CLIENT.webp" alt="client">
                         <span><i class="ri-double-quotes-1"></i></span>
                         <p>
-                            اقدع اجينسي جربتها في حياتي ربنا يبارك لهم
-                        </p>
-                        <h4>احمد رمضان </h4>
-                        <h5>
-                            معلم رياضه
-                        </h5>
+                            Effortless and quick itinerary creation. A must-have for anyone visiting Saudi Arabia!                        </p>
+                        <h4>Ahmed</h4>
                     </div>
                 </div>
                 <div class="swiper-slide">
                     <div class="client__card">
-                        <img src="assert/client 44.jpg" alt="client">
+                        <img src="assert/CLIENT.webp" alt="client">
                         <span><i class="ri-double-quotes-1"></i></span>
                         <p>
-                            خيي كتير مهضومين يعني عن جد اجينسي من الاخر
-                        </p>
-                        <h4> فتحي </h4>
-                        <h5>
-                            بائع عطور
-                        </h5>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="client__card">
-                        <img src="assert/CLIENT 5.jpg" alt="client">
-                        <span><i class="ri-double-quotes-1"></i></span>
-                        <p>
-                            thye are the best tour guide ever!!!
-                        </p>
-                        <h4>michael lee</h4>
-                        <h5>
-                            CEO
-                        </h5>
+                            Impressed by the accuracy of the AI. It made planning my trip so much easier!                        </p>
+                        <h4>Saad</h4>
                     </div>
                 </div>
             </div>
