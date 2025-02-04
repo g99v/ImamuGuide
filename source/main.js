@@ -73,13 +73,12 @@ import {
     loadingPopup.style.display = "flex";
 
       // Retrieve input values
-      const source = document.getElementById("source").value.trim();
       const destination = document.getElementById("destination").value.trim();
       const startDate = document.getElementById("start_date").value.trim();
       const endDate = document.getElementById("end_date").value.trim();
   
       // Validate input
-      if (!source || !destination || !startDate || !endDate) {
+      if (!destination || !startDate || !endDate) {
         alert("Please fill in all fields.");
         loadingPopup.style.display = "none"; // Hide the loading popup
         return;
@@ -103,7 +102,7 @@ import {
         const weatherData = await getWeatherData(weatherApiKey, destination, startDate, endDate);
   
         // Generate AI content using the same inputs
-        const aiResponse = await generateAIContent(googleApiKey, source, destination, startDate, endDate, noOfDays);
+        const aiResponse = await generateAIContent(googleApiKey, destination, startDate, endDate, noOfDays);
   
         // Store data in localStorage
         localStorage.setItem("weatherData", JSON.stringify(weatherData));
@@ -132,7 +131,7 @@ import {
     }
   
     // Function to generate AI content
-    async function generateAIContent(apiKey, source, destination, startDate, endDate, noOfDays) {
+    async function generateAIContent(apiKey, destination, startDate, endDate, noOfDays) {
       const genAI = new GoogleGenerativeAI(apiKey);
   
       const model = genAI.getGenerativeModel({
