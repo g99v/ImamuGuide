@@ -1,4 +1,4 @@
-name: Website Tests
+name: Weather API Tests
 
 on: [push, pull_request]
 
@@ -6,20 +6,14 @@ jobs:
   test:
     runs-on: ubuntu-latest
     defaults:
-        run:
-          working-directory: ./source/
-    services:
-      server:
-        image: nginx:alpine
-        ports:
-          - 8080:80
-        volumes:
-          - ./source:/usr/share/nginx/html
+      run:
+        working-directory: ./source/
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-    - name: Setup Node
+    - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
         node-version: 20.x
@@ -27,7 +21,5 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Run HTML tests
-      run: npm test -- html.test.js
-
-
+    - name: Run Weather API tests
+      run: npm test -- weatherApi.test.js
